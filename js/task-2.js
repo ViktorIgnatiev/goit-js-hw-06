@@ -17,12 +17,17 @@ class Storage {
 
   removeItem = (itemToRemove) => {
       const findItem = this.#items.indexOf(itemToRemove)
-        const deleteItem = this.#items.splice(findItem, 1);
-      return deleteItem
+      if (findItem != -1) {
+          const deleteItem = this.#items.splice(findItem, 1);
+            return deleteItem
+      }
+        
+      
   }
 }
 
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 storage.addItem("Droid");
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
